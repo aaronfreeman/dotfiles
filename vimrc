@@ -1,6 +1,3 @@
-source ~/.vim/bundles.vim
-
-
 "====== Mappings =======
 let mapleader = ","
 nore ; :
@@ -14,12 +11,8 @@ inoremap jJ <Esc>
 set t_Co=256
 set term=screen-256color
 
-"Only load the colors if it isn't currently loaded. This was messing up the
-"colors for the statusline. The molokai clears all highlights so when this
-"file is sourced, it removes statusline colors.
-if(!exists("g:colors_name") || g:colors_name != 'molokai')
-  colorscheme molokai
-endif
+colorscheme koehler
+
 syntax enable
 
 "Makes the background match the terminal background.  Allows transparency.
@@ -62,6 +55,3 @@ set softtabstop=4
 set shiftwidth=4
 " Custom indentation for certain file types
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
-
-
-source ~/.vim/plugins.vim
