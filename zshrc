@@ -23,6 +23,7 @@ alias gco='git co $1'
 alias gcd='git co dev'
 alias gcob='git cob $1'
 alias br='bun run $1'
+alias vim='nvim'
 alias delb='git branch | grep -v "main" | xargs git branch -d'
 alias dotfiles="git -C $script_dir pull > /dev/null 2>&1 && $script_dir/setup.sh"
 
