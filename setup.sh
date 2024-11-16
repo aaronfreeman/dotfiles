@@ -1,34 +1,41 @@
-#!/bin/bash
+#!/bin/zsh
 
 script_dir=$(dirname "$0")
+script_dir=$(cd "$script_dir" && pwd)
 
-if [ ! -d "~/.oh-my-zsh" ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "You need to install Oh My ZSH first by running:"
+  echo 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+  exit
 else
-  git -C ~/.oh-my-zsh pull
+  git -C ~/.oh-my-zsh pull > /dev/null 2>&1
 fi
 
 asdf_version="v0.14.1"
 
-if [ ! -d "~/.asdf" ]; then
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $asdf_version
+if [ ! -d "$HOME/.asdf" ]; then
+  git clone https://github.com/asdf-vm/asdf.git "$HOME/.asdf" --branch $asdf_version
 else
-  git -C ~/.asdf checkout $asdf_version
+  git -C ~/.asdf checkout $asdf_version > /dev/null 2>&1
 fi
 
-if [ ! -f "~/.gitconfig" ]; then
-  cp "$script_dir/gitconfig" ~/.gitconfig
+if [ ! -f "$HOME/.gitconfig" ]; then
+  cp "$script_dir/gitconfig" "$HOME/.gitconfig"
 fi
 
-if [ ! -f "~/.vimrc" ]; then
-  cp "$script_dir/vimrc" ~/.vimrc
+if [ ! -f "$HOME/.vimrc" ]; then
+  ln -s "$script_dir/vimrc" "$HOME/.vimrc"
 fi
 
-source_this_file="$script_dir/zshrc"
-zshrc_file=~/.zshrc
+zshrc_file="$HOME/.zshrc"
 
-if ! grep -Fxq "$source_this_file" "$zshrc_file"; then
-  echo "$source_this_file" >> "$zshrc_file"
+# Comment out plugins line in .zshrc file since it's in zshrc
+sed -i '' 's/^plugins/# &/' "$zshrc_file"
+
+command_to_insert="source $script_dir/zshrc"
+
+if ! grep -Fxq "$command_to_insert" "$zshrc_file"; then
+  echo "$command_to_insert" >> "$zshrc_file"
 fi
 
-source ~/.zshrc
+source $HOME/.zshrc
