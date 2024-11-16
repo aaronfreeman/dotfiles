@@ -1,0 +1,24 @@
+[alias]
+	s = status
+    st = stash
+	a = add -A .
+	ca = commit -a -m
+	c = commit -m
+	d = diff
+    b = branch
+	co = checkout
+	cob = checkout -b
+	ph = push origin HEAD
+[color]
+	ui = auto
+[user]
+	name = Aaron Freeman
+	email = aaron@freeman.zone
+[core]
+	editor = vim
+[pull]
+	rebase = false
+[pager]
+	branch = false
+[init]
+	defaultBranch = main
