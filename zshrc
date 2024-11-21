@@ -1,4 +1,4 @@
-plugins=(git vscode asdf gradle)
+plugins=(vscode asdf gradle)
 
 script_dir=$(dirname "$0")
 script_dir=$(cd "$script_dir" && pwd)
