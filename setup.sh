@@ -29,13 +29,15 @@ fi
 
 zshrc_file="$HOME/.zshrc"
 
-# Comment out plugins line in .zshrc file since it's in zshrc
+# Comment out plugins since it's in zshrc
 sed -i '' 's/^plugins/# &/' "$zshrc_file"
 
 command_to_insert="source $script_dir/zshrc"
 
 if ! grep -Fxq "$command_to_insert" "$zshrc_file"; then
-  echo "$command_to_insert" >> "$zshrc_file"
+sed -i '' '/source \$ZSH\/oh-my-zsh.sh/i\
+source /Users/aaron/Projects/dotfiles/zshrc
+' "$zshrc_file"
 fi
 
 source $HOME/.zshrc

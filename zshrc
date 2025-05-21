@@ -1,4 +1,4 @@
-plugins=(git vscode asdf gradle)
+plugins=(vscode asdf gradle)
 
 script_dir=$(dirname "$0")
 script_dir=$(cd "$script_dir" && pwd)
@@ -23,7 +23,7 @@ alias gco='git co $1'
 alias gcd='git co dev'
 alias gcob='git cob $1'
 alias br='bun run $1'
-alias delb='git branch | grep -v "main" | xargs git branch -d'
+alias delb='git branch | grep -v "main" | xargs git branch -D'
 alias dotfiles="git -C $script_dir pull > /dev/null 2>&1 && $script_dir/setup.sh"
 
 # Adding things to my path
