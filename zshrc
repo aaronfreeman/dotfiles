@@ -28,3 +28,6 @@ alias dotfiles="git -C $script_dir pull > /dev/null 2>&1 && $script_dir/setup.sh
 
 # Adding things to my path
 export PATH=.:$PATH:~/.bin
+
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
