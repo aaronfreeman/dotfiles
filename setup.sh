@@ -11,12 +11,8 @@ else
   git -C ~/.oh-my-zsh pull > /dev/null 2>&1
 fi
 
-asdf_version="v0.14.1"
-
 if [ ! -d "$HOME/.asdf" ]; then
-  git clone https://github.com/asdf-vm/asdf.git "$HOME/.asdf" --branch $asdf_version
-else
-  git -C ~/.asdf checkout $asdf_version > /dev/null 2>&1
+  brew isntall asdf
 fi
 
 if [ ! -f "$HOME/.gitconfig" ]; then
