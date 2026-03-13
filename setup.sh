@@ -13,6 +13,9 @@ fi
 
 if [ ! -d "$HOME/.asdf" ]; then
   brew isntall asdf
+  asdf plugin add nodejs
+  asdf plugin add java
+  asdf plugin add kotlin
 fi
 
 if [ ! -f "$HOME/.gitconfig" ]; then
