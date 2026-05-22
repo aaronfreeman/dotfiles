@@ -51,5 +51,5 @@ wtd() {
   local main_dir=$(git worktree list | head -1 | awk '{print $1}')
   cd "$main_dir"
   git worktree remove "$current_dir"
-  git branch -d "$branch"
+  git branch -D "$branch"
 }
